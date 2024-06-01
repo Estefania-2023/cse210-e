@@ -13,7 +13,7 @@ public class Customer
 
     public bool isFromUSA()
     {
-        return _address.isUSA() ? true : false;
+        return _address.isUnitedStates() ? true : false;
     }
     
     public string GetName()
