@@ -24,7 +24,7 @@ public class Lectures : Event
     private void SetEventCapacity()
     {
         Console.Write("Enter capacity of attendees: ");
-
+        _eventCapacity = int.Parse(Console.ReadLine());
     }
 
     public int GetEventCapacity()

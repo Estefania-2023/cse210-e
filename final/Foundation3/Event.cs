@@ -87,6 +87,4 @@ public class Event
     {
         Console.WriteLine($"Event type: {GetEventType()}\nEvent title: {GetEventTitle()}\nEvent date: {GetDate()}");
     }
-
-
 }

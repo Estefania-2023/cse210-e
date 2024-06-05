@@ -1,5 +1,6 @@
 using System;
 
+// I modify the Address class to fit program function workflow
 public class Address
 {
     private string _streetAddress;
@@ -40,7 +41,8 @@ public class Address
 
     private void SetStateOrProvince()
     {
-        
+        Console.Write("Enter state/province: ");
+        _stateOrProvince = Console.ReadLine();
     }
 
     public string GetStateOrProvince()
@@ -50,7 +52,8 @@ public class Address
 
     private void SetCountry()
     {
-
+        Console.Write("Enter country name: ");
+        _country = Console.ReadLine();
     }
 
     public string GetCountry()
@@ -69,7 +72,9 @@ public class Address
     public string DisplayAddressInfo()
     {
         
-        return "";
+        string addressInfo = $"Street: {GetStreetAddress()}\nCity: {GetCity()}\nState/Province: {GetStateOrProvince()}\nCountry: {GetCountry()}";
+        // Console.WriteLine(addressInfo);
+        return addressInfo;
     }
 
 }

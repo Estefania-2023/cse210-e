@@ -38,7 +38,51 @@ class Program
 
         switch (theEvent)
         {
-           
+           case "1":
+                Lectures lectures = new();
+                lectures.BookLectureEvent();
+
+                StandardMessage();
+                lectures.DisplayStandardDetails();
+
+                FulldMessage();
+                lectures.DisplayFullDetails();
+
+                ShortMessage();
+                lectures.DisplayShortDetails();
+                break;
+
+            case "2":
+                Reception reception = new();
+                reception.BookReceptionEvent();
+
+                StandardMessage();
+                reception.DisplayStandardDetails();
+
+                FulldMessage();
+                reception.DisplayFullDetails();
+
+                ShortMessage();
+                reception.DisplayShortDetails();
+                break;
+
+            case "3":
+                Outdoor outdoor = new();
+                outdoor.BookEvent();
+
+                StandardMessage();
+                outdoor.DisplayStandardDetails();
+
+                FulldMessage();
+                outdoor.DisplayFullDetails();
+
+                ShortMessage();
+                outdoor.DisplayShortDetails();
+                break;
+
+            default:
+                Console.WriteLine("[❗️❗️❗️...Invalid Event] - You entered an event that's not in the list of events we plan");
+                break;
         }
     }
 }

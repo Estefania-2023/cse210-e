@@ -6,7 +6,7 @@ public class Outdoor : Event
 
     public Outdoor()
     {
-        SetEventType("Outdoor");
+        SetEventType("Outdoors");
     }
 
     private string GetWeatherForecast()
