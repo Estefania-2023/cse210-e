@@ -1,29 +1,52 @@
 using System;
 
-public class StationaryBicycles : Activity
+public class Cycling : Activity
 {
-    private double _speed;
+    private int _clyclingSpeed;
 
-    public StationaryBicycles(string date, int minutes, double speed) : base(date, minutes)
+    public Cycling()
+    {}
+
+    private void SetCyclingSpeed()
     {
-        _name = "Stationary Bicycles";
-        _speed = speed;
+        Console.Write("Enter cycling speed: ");
+        _clyclingSpeed = int.Parse(Console.ReadLine());
+    }
+
+    private int GetCyclingSpeed()
+    {
+        return _clyclingSpeed;
     }
 
     public override double CalculateDistance()
     {
-        double distance = _speed * _minutes / 60;
+        double distance = 0;
+        if (GetMetricUnit() == "km")
+        {
+            distance = GetCyclingSpeed() * GetExerciseDuration() / 1000;
+        } 
+        else if (GetMetricUnit() == "miles")
+        {
+            distance = GetCyclingSpeed() * GetExerciseDuration() / (1000 * 0.62);
+        }
         return distance;
     }
 
     public override double CalculateSpeed()
     {
-        return _speed;
+        double computeSpeed = (GetCyclingSpeed() / GetExerciseDuration());
+        return computeSpeed;
     }
 
     public override double CalculatePace()
     {
-        double pace = 60 / _speed;
-        return pace;
+        double computePace = GetExerciseDuration() / GetCyclingSpeed();
+        return computePace;
+    }
+
+    public void StartCycling()
+    {
+        StartExercise();
+        SetCyclingSpeed();
     }
 }

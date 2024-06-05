@@ -2,28 +2,51 @@ using System;
 
 public class Running : Activity
 {
-    private double _distance;
+    private double _runningDistance;
 
-    public Running(string date, int minutes, double distance) : base(date, minutes)
+    public Running()
+    {}
+
+    private void SetRunningDistance()
     {
-        _name = "Running";
-        _distance = distance;
+        Console.Write("Enter distance: ");
+        _runningDistance = double.Parse(Console.ReadLine());
+    }
+
+    private double GetRunningDistance()
+    {
+        return _runningDistance;
     }
 
     public override double CalculateDistance()
     {
-        return _distance;
+        double distance = 0;
+        if (GetMetricUnit() == "km")
+        {
+            distance = _runningDistance;
+        } 
+        else if (GetMetricUnit() == "miles")
+        {
+            distance = _runningDistance;
+        }
+        return distance;
     }
 
     public override double CalculateSpeed()
     {
-        double speed = (_distance / _minutes) * 60;
-        return speed;
+        double computeSpeed = (GetRunningDistance() / GetExerciseDuration()) * 60;
+        return computeSpeed;
     }
 
     public override double CalculatePace()
     {
-        double pace = _minutes / _distance;
-        return pace;
+        double computePace = GetExerciseDuration() / GetRunningDistance();
+        return computePace;
+    }
+
+    public void StartRunning()
+    {
+        StartExercise();
+        SetRunningDistance();
     }
 }

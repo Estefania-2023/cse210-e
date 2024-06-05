@@ -2,29 +2,51 @@ using System;
 
 public class Swimming : Activity
 {
-    private double _laps;
+    private int _numberOfLaps;
 
-    public Swimming(string date, int minutes, int laps) : base(date, minutes)
+    public Swimming()
+    {}
+
+    private void SetSwimmingLaps()
     {
-        _name = "Swimming";
-        _laps = laps;
+        Console.Write("Enter swimming laps: ");
+        _numberOfLaps = int.Parse(Console.ReadLine());
+    }
+
+    private int GetSwimmingLaps()
+    {
+        return _numberOfLaps;
     }
 
     public override double CalculateDistance()
     {
-        double distance = _laps * 50 / 1000;
+        double distance = 0;
+        if (GetMetricUnit() == "km")
+        {
+            distance = GetSwimmingLaps() * GetExerciseDuration() / 1000;
+        } 
+        else if (GetMetricUnit() == "miles")
+        {
+            distance = GetSwimmingLaps() * GetExerciseDuration() / (1000 * 0.62);
+        }
         return distance;
     }
 
     public override double CalculateSpeed()
     {
-        double speed = CalculateDistance() / _minutes * 60;
-        return speed;
+        double computeLaps = GetSwimmingLaps() / GetExerciseDuration();
+        return computeLaps;
     }
 
     public override double CalculatePace()
     {
-        double pace = _minutes / CalculateDistance();
-        return pace;
+        double computePace = GetExerciseDuration() / GetSwimmingLaps();
+        return computePace;
+    }
+
+    public void StartSwimming()
+    {
+        StartExercise();
+        SetSwimmingLaps();
     }
 }
